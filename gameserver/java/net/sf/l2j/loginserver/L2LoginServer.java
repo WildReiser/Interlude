@@ -73,7 +73,7 @@ public class L2LoginServer
 		LogManager.getLogManager().readConfiguration(is);
 		is.close();
 		
-		Util.printSection("aCis");
+		Util.printSection("Login Server");
 		
 		// Initialize config
 		Config.load();

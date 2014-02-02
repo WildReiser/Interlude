@@ -361,7 +361,7 @@ public class GameServer
 		LogManager.getLogManager().readConfiguration(is);
 		is.close();
 		
-		Util.printSection("aCis");
+		Util.printSection("Game Server");
 		
 		// Initialize config
 		Config.load();
