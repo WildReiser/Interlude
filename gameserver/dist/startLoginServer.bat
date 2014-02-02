@@ -1,5 +1,5 @@
 @echo off
-title aCis loginserver console
+title Login-server
 :start
 java -Xmx128m -cp ./libs/*; net.sf.l2j.loginserver.L2LoginServer
 if ERRORLEVEL 2 goto restart
