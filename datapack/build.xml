@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<project name="aCis_datapack" default="build" basedir=".">
+<project name="datapack" default="build" basedir=".">
 
 	<property name="build" location="build" />
-	<property name="build.game" location="${build}/gameserver" />
+	<property name="build.game" location="${build}/game" />
 	<property name="build.login" location="${build}/login" />
 	<property name="build.sql" location="${build}/sql" />
 	<property name="build.tools" location="${build}/tools" />
@@ -57,7 +57,7 @@
 		<exec dir="." executable="./subversion/svnversion" outputproperty="revision" failifexecutionfails="false">
 			<arg line="-n ." />
 		</exec>
-		<echo message="aCis datapack revision: ${revision}" />
+		<echo message="datapack revision: ${revision}" />
 	</target>
 
 	<target name="clean" description="Deletes the whole build space and existing packages.">
