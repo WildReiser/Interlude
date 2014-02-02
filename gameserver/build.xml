@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="aCis_gameserver" default="dist" basedir=".">
+<project name="gameserver" default="dist" basedir=".">
 
 	<property name="src" location="java" />
 	<property name="lib" location="lib" />
@@ -7,7 +7,7 @@
 	<property name="build.classes" location="${build}/classes" />
 	<property name="build.dist" location="${build}/dist" />
 	<property name="build.dist.login" location="${build.dist}/login" />
-	<property name="build.dist.game" location="${build.dist}/gameserver" />
+	<property name="build.dist.game" location="${build.dist}/game" />
 
 	<path id="classpath">
 		<fileset dir="${lib}">
