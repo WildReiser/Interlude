@@ -136,7 +136,7 @@
 		<exec dir="." executable="./subversion/svnversion" outputproperty="revision" failifexecutionfails="false">
 			<arg line="-n ." />
 		</exec>
-		<echo message="aCis gameserver revision: ${revision}" />
+		<echo message="gameserver revision: ${revision}" />
 	</target>
 
 </project>
