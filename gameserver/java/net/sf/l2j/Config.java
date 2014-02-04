@@ -619,7 +619,11 @@ public final class Config
 	
 	/** Community Board */
 	public static boolean ENABLE_COMMUNITY_BOARD;
+	public static boolean SHOW_LEVEL_COMMUNITYBOARD;
 	public static String BBS_DEFAULT;
+	public static boolean BBS_SHOW_PLAYERLIST;
+	public static int NAME_PER_ROW_COMMUNITYBOARD;
+	public static int NAME_PAGE_SIZE_COMMUNITYBOARD;
 	
 	/** Geodata */
 	public static int COORD_SYNCHRONIZE;
@@ -1218,8 +1222,12 @@ public final class Config
 			LOG_ITEMS = server.getProperty("LogItems", false);
 			GMAUDIT = server.getProperty("GMAudit", false);
 			
-			ENABLE_COMMUNITY_BOARD = server.getProperty("EnableCommunityBoard", false);
+			ENABLE_COMMUNITY_BOARD = server.getProperty("EnableCommunityBoard", true);
 			BBS_DEFAULT = server.getProperty("BBSDefault", "_bbshome");
+			SHOW_LEVEL_COMMUNITYBOARD = server.getProperty("ShowLevelCommunityBoard", true);
+			BBS_SHOW_PLAYERLIST = server.getProperty("BBSShowPlayerList", true);
+			NAME_PER_ROW_COMMUNITYBOARD = server.getProperty("NumberRowNameCommunity", 20);
+			NAME_PAGE_SIZE_COMMUNITYBOARD = server.getProperty("PageSizeCommunity", 100);
 			
 			COORD_SYNCHRONIZE = server.getProperty("CoordSynchronize", -1);
 			GEODATA = server.getProperty("GeoData", 0);
