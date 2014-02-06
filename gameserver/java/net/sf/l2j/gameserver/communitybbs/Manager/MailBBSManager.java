@@ -258,9 +258,9 @@ public class MailBBSManager extends BaseBBSManager
 		html.append("<br>");
 		html.append("<table border=0 cellspacing=0 cellpadding=2 bgcolor=A7A19A width=755><tr>");
 		html.append("<td FIXWIDTH=5 align=center></td>");
-		html.append("<td FIXWIDTH=150 align=center>&$911;</td>");
-		html.append("<td FIXWIDTH=440>&$413;</td>");
-		html.append("<td FIXWIDTH=150 align=center>&$910;</td>");
+		html.append("<td FIXWIDTH=100 align=center>&$911;</td>");
+		html.append("<td FIXWIDTH=402>&$413;</td>");
+		html.append("<td FIXWIDTH=100 align=center>&$910;</td>");
 		html.append("<td FIXWIDTH=5 align=center></td>");
 		html.append("</tr></table>");
 		for (Mail letter : getPlayerMails(activeChar.getObjectId()))
@@ -277,15 +277,15 @@ public class MailBBSManager extends BaseBBSManager
 				String tempName = getCharName(letter.senderId);
 				html.append("<table border=0 cellspacing=0 cellpadding=5 width=755><tr>");
 				html.append("<td FIXWIDTH=5 align=center></td>");
-				html.append("<td FIXWIDTH=150 align=center>" + abbreviate(tempName, 6) + "</td>");
-				html.append("<td FIXWIDTH=440 ><a action=\"bypass _maillist_0_1_0_view " + letter.letterId + "\">");
+				html.append("<td FIXWIDTH=100 align=center>" + abbreviate(tempName, 6) + "</td>");
+				html.append("<td FIXWIDTH=402 ><a action=\"bypass _maillist_0_1_0_view " + letter.letterId + "\">");
 				if (letter.unread)
 					html.append("<font color=\"LEVEL\">");
 				html.append(abbreviate(letter.subject, 51));
 				if (letter.unread)
 					html.append("</font>");
 				html.append("</a>");
-				html.append("</td><td FIXWIDTH=150 align=center>" + letter.sentDateString.substring(0, letter.sentDateString.length() - 5) + "</td>");
+				html.append("</td><td FIXWIDTH=100 align=center>" + letter.sentDateString.substring(0, letter.sentDateString.length() - 5) + "</td>");
 				html.append("<td FIXWIDTH=5 align=center></td></tr></table>");
 				html.append("<img src=\"L2UI.Squaregray\" width=\"755\" height=\"1\">");
 				index++;
