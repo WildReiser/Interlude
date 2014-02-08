@@ -199,19 +199,18 @@ public class EnterWorld extends L2GameClientPacket
 		}
 		activeChar.sendPacket(new QuestList());
 		
-		if (activeChar.getClan().isNoticeEnabled())
+		if (Config.SERVER_NEWS)
+		{
+			NpcHtmlMessage html = new NpcHtmlMessage(0);
+			html.setFile("data/html/servnews.htm");
+			sendPacket(html);
+		}
+		else if (activeChar.getClan() != null && activeChar.getClan().isNoticeEnabled())
 		{
 			NpcHtmlMessage html = new NpcHtmlMessage(1);
 			html.setFile("data/html/clanNotice.htm");
 			html.replace("%clan_name%", activeChar.getClan().getName());
 			html.replace("%notice_text%", activeChar.getClan().getNotice().replaceAll("\r\n", "<br>"));
-			sendPacket(html);
-		}
-		
-		else if (Config.SERVER_NEWS)
-		{
-			NpcHtmlMessage html = new NpcHtmlMessage(0);
-			html.setFile("data/html/servnews.htm");
 			sendPacket(html);
 		}
 		
@@ -268,6 +267,7 @@ public class EnterWorld extends L2GameClientPacket
 		clan.broadcastToOtherOnlineMembers(new PledgeShowMemberListUpdate(activeChar), activeChar);
 		
 		msg = null;
+		 
 	}
 	
 	private static void notifySponsorOrApprentice(L2PcInstance activeChar)
