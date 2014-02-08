@@ -199,7 +199,16 @@ public class EnterWorld extends L2GameClientPacket
 		}
 		activeChar.sendPacket(new QuestList());
 		
-		if (Config.SERVER_NEWS)
+		if (activeChar.getClan().isNoticeEnabled())
+		{
+			NpcHtmlMessage html = new NpcHtmlMessage(1);
+			html.setFile("data/html/clanNotice.htm");
+			html.replace("%clan_name%", activeChar.getClan().getName());
+			html.replace("%notice_text%", activeChar.getClan().getNotice().replaceAll("\r\n", "<br>"));
+			sendPacket(html);
+		}
+		
+		else if (Config.SERVER_NEWS)
 		{
 			NpcHtmlMessage html = new NpcHtmlMessage(0);
 			html.setFile("data/html/servnews.htm");

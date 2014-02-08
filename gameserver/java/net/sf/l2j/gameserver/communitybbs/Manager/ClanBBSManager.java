@@ -6,6 +6,7 @@ import net.sf.l2j.gameserver.datatables.ClanTable;
 import net.sf.l2j.gameserver.model.L2Clan;
 import net.sf.l2j.gameserver.model.zone.type.L2CastleZone;
 import net.sf.l2j.gameserver.model.actor.instance.L2PcInstance;
+import net.sf.l2j.gameserver.model.entity.Castle;
 import net.sf.l2j.gameserver.network.SystemMessageId;
 import net.sf.l2j.gameserver.network.serverpackets.SystemMessage;
 import net.sf.l2j.util.StringUtil;
@@ -100,9 +101,9 @@ public class ClanBBSManager extends BaseBBSManager
 			else
 			{
 				final StringBuilder html = StringUtil.startAppend(2000, "<html><body><br><br>"
-						+ "<table border=0 width=610><tr><td width=10></td><td width=600 align=left>"
-						+ "<a action=\"bypass _bbshome\">HOME</a> &gt; "
-						+ "<a action=\"bypass _bbsclan_clanlist\"> CLAN COMMUNITY </a>  &gt; " + "<a action=\"bypass _bbsclan_clanhome;", String.valueOf(clanId), "\"> &amp;$802; </a>"
+						+ "<table border=0 width=610>"
+						+ "<tr><td width=10></td><td width=600 align=left>"
+						+ "<a action=\"bypass _bbsclan_clanlist\"> CLAN LIST </a>  &gt; " + "<a action=\"bypass _bbsclan_clanhome;", String.valueOf(clanId), "\"> &amp;$802; </a>"
 						+ "</td></tr>" + "</table>");
 				if (activeChar.isClanLeader())
 				{
@@ -168,13 +169,12 @@ public class ClanBBSManager extends BaseBBSManager
 		
 		//header
 		final StringBuilder html = StringUtil.startAppend(2000, "<html><body><br><br><center>"
-				+ "<br1><br1><table border=0 cellspacing=0 cellpadding=0>" + "<tr><td FIXWIDTH=15>&nbsp;</td>"
-				+ "<td width=610 height=30 align=left>" + "<a action=\"bypass _bbsclan_clanlist\"> CLAN COMMUNITY </a>"
+				+ "<br1><br1><table border=0 cellspacing=0 cellpadding=0>"
+				+ "<tr><td FIXWIDTH=15></td>"
+				+ "<td width=610 height=30 align=left><a action=\"bypass _bbsclan_clanlist\"> CLAN LIST </a>"
 				+ "</td></tr></table>" + "<table border=0 cellspacing=0 cellpadding=0 width=610 bgcolor=434343>"
-				+ "<tr><td height=10></td></tr>" + "<tr>" + "<td fixWIDTH=5></td>" + "<td fixWIDTH=600>"
-				+ "<a action=\"bypass _bbsclan_clanhome;", String.valueOf((activeChar.getClan() != null) ? activeChar.getClan().getClanId() : 0), "\">[GO TO MY CLAN]</a>&nbsp;&nbsp;"
-				+ "</td>"
-				+ "<td fixWIDTH=5></td>"
+				+ "<tr><td height=10></td></tr>"
+				+ "<tr><td fixWIDTH=5></td><td fixWIDTH=600><a action=\"bypass _bbsclan_clanhome;", String.valueOf((activeChar.getClan() != null) ? activeChar.getClan().getClanId() : 0), "\">[GO TO MY CLAN]</a>&nbsp;&nbsp;</td><td fixWIDTH=5></td>"
 				+ "</tr>"
 				+ "<tr><td height=10></td></tr>"
 				+ "</table>"
@@ -186,7 +186,8 @@ public class ClanBBSManager extends BaseBBSManager
 				+ "<td FIXWIDTH=200 align=center>CLAN LEADER</td>"
 				+ "<td FIXWIDTH=100 align=center>CLAN LEVEL</td>"
 				+ "<td FIXWIDTH=100 align=center>CLAN MEMBERS</td>"
-				+ "<td FIXWIDTH=5></td>" + "</tr>" + "</table>" + "<img src=\"L2UI.Squareblank\" width=\"1\" height=\"5\">");
+				+ "<td FIXWIDTH=5></td>" + "</tr>" + "</table>"
+				+ "<img src=\"L2UI.Squareblank\" width=\"1\" height=\"5\">");
 		
 		int i = 0;
 		for (L2Clan cl : ClanTable.getInstance().getClans())
@@ -337,31 +338,18 @@ public class ClanBBSManager extends BaseBBSManager
 						+ "</table>"
 						+ "<img src=\"L2UI.squareblank\" width=\"1\" height=\"5\">"
 						+ "<img src=\"L2UI.squaregray\" width=\"610\" height=\"1\">" + "<br>" + "<br> <br>"
-						+ "<br>");
-				
-				if (cl.hasCastle())
-				{
-					String html2 = StringUtil.concat("<table border=0 cellspacing=0 cellpadding=0 width=600>"
-							+ "<tr>" + "<td fixWIDHT=600 align=center>Clan Territory Status</td>" + "</tr>" + "<br> <br>"
-							+ "<tr>" + "<td fixWIDHT=100 align=left>Calste:</td>" + "<td fixWIDHT=100 align=left>CASTLE NAME", String.valueOf(cl.getCastleId()),"</td>" + "</tr>"
-							+ "<tr>" + "<td fixWIDHT=100 align=left>Tax percent:</td>" + "<td fixWIDHT=100 align=left>NALOG</td>" + "</tr>"
-							+ "</center>" + "</body>" + "</html>");
-					separateAndSend(html2, activeChar);
-					separateAndSend(html, activeChar);
-				}
-				else
-				{
-					String html3 = StringUtil.concat("<table border=0 cellspacing=0 cellpadding=0 width=600>"
-							+ "<tr>" + "<td fixWIDHT=600 align=center>No Clan Territory</td>" + "</tr>" + "<br> <br>"
-							+ "</center>" + "</body>" + "</html>");
-					separateAndSend(html3, activeChar);
+						+ "<br>"
+						+ "<table border=0 cellspacing=0 cellpadding=0 width=600>"
+						+ "<tr>" + "<td fixWIDHT=600 align=center>Clan Territory Status</td>" + "</tr>" + "<br> <br>"
+						+ "<tr><td fixWIDHT=100 align=left>Calste:</td><td fixWIDHT=100 align=left>CASTLE NAME" + cl.getCastleId() + "</td></tr>"
+						+ "<tr><td fixWIDHT=100 align=left>Tax percent:</td>[ NOT DONE ]<td fixWIDHT=100 align=left>NALOG</td></tr>"
+						+ "</center>" + "</body>" + "</html>");
 					separateAndSend(html, activeChar);
 				}
 				
 			}
 			
 		}
-	}
 	
 	/**
 	 * @return

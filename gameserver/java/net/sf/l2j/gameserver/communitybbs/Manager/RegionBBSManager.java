@@ -32,7 +32,7 @@ public class RegionBBSManager extends BaseBBSManager
 	{
 		if (command.equals("_bbsloc"))
 		{
-			// showOldCommunity(activeChar, 1);
+			loadStaticHtm("index.htm", activeChar);
 		}
 		else
 			separateAndSend("<html><body><br><br><center>The command: " + command + " isn't implemented.</center></body></html>", activeChar);
@@ -44,6 +44,11 @@ public class RegionBBSManager extends BaseBBSManager
 		separateAndSend("<html><body><br><br><center>The command: " + ar1 + " isn't implemented yet</center></body></html>", activeChar);
 	}
 	
+	@Override
+	protected String getFolder()
+	{
+		return "region/";
+	}
 	private static class SingletonHolder
 	{
 		protected static final RegionBBSManager _instance = new RegionBBSManager();
